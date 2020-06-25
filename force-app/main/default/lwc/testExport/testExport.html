@@ -1,0 +1,62 @@
+<template>
+ <lightning-card  title="Data Table" icon-name="action:download">
+ <article>
+<section>
+    <span class="button"> <lightning-button icon-name="utility:share_mobile" label="exportAll" onclick={downloadCSVFile} variant="brand" icon-position="right">
+    </lightning-button> </span> 
+</section>
+<section>
+    <template if:true={data}>
+    <div class="slds-table  slds-table_bordered slds-table_striped">
+        <lightning-datatable
+                key-field="id"
+                data={currentPageData}
+                columns={columns}
+                hide-checkbox-column=true>
+        </lightning-datatable>
+    </div> 
+
+ <lightning-layout>
+    <lightning-layout-item size="12" margin="around-large" class="c-pagination">
+        <div class="slds-align_absolute-center">
+           <ul class="slds-button-group-row">
+              <template if:true={hasPrev}>
+                 <li class="slds-button-group-item" >
+                    <button class="slds-button slds-button_neutral" onclick ={onPrev}> prev
+                    </button>
+                 </li>
+              </template>
+              <template for:each={pagesList} for:item= "pageNumber">
+                 <li class="slds-button-group-item" key={pageNumber}>
+                    <button data-id={pageNumber} class="slds-button slds-button_neutral"
+                       onclick={onPageClick}>{pageNumber}</button>
+                 </li>
+              </template>
+              <template if:true={hasNext}>
+                 <li class="slds-button-group-item" >
+                    <button class="slds-button slds-button_neutral" onclick={onNext}
+                       >next</button>
+                 </li>
+              </template>
+           </ul>
+        </div>
+     </lightning-layout-item>
+ </lightning-layout> 
+    </template>
+</section>  
+</article>
+</lightning-card>
+<template if:true={showSpinner}>
+<article class="spinner">
+    <div class="demo-only" style="height:6rem">
+        <div class="slds-spinner_container">
+          <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+          </div>
+        </div>
+      </div>
+</article>
+</template>
+</template>

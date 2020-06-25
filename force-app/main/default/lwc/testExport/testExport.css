@@ -1,0 +1,14 @@
+.button { 
+    padding-right: 4rem;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+   
+}
+/*.button:hover{
+    color:white !important;
+    background-color: #0070d2 !important;  
+    text-decoration: none;
+    border-radius: 20px !important; 
+    border-color: #0070d2 !important; 
+}*/
